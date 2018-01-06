@@ -22,6 +22,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LogoutView
+from accounts.views import LoginView, RegisterView
 
 
 
@@ -31,6 +32,8 @@ urlpatterns = [
     url(r"^$", views.HomePage.as_view(), name="home"),
     url(r"^test/$", views.TestPage.as_view(), name="test"),
     url(r"^thanks/$", views.ThanksPage.as_view(), name="thanks"),
+    url(r'^login/$', LoginView.as_view(), name='login'),
     url(r"logout/$", LogoutView.as_view(), name="logout"),
+    url(r"register/$", RegisterView.as_view(), name="register"),
     url(r"^accounts/", include("accounts.urls", namespace="accounts")),
 ]
