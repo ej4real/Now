@@ -51,8 +51,9 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'accounts.User'
  #changes the built-in user model to ours
 LOGIN_URL = '/login/'
-LOGIN_URL_REDIRECT = '/'
-LOGOUT_URL = '/logout/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

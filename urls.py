@@ -23,17 +23,20 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LogoutView
 from accounts.views import LoginView, RegisterView
+from django.views.generic import TemplateView, RedirectView
 
-
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r"^$", views.HomePage.as_view(), name="home"),
-    url(r"^test/$", views.TestPage.as_view(), name="test"),
-    url(r"^thanks/$", views.ThanksPage.as_view(), name="thanks"),
+    #url(r"^test/$", views.TestPage.as_view(), name="test"),
+    #url(r"^thanks/$", views.ThanksPage.as_view(), name="thanks"),
     url(r'^login/$', LoginView.as_view(), name='login'),
-    url(r"logout/$", LogoutView.as_view(), name="logout"),
     url(r"register/$", RegisterView.as_view(), name="register"),
-    url(r"^accounts/", include("accounts.urls", namespace="accounts")),
+    url(r'^accounts/$', RedirectView.as_view(url='/')),
+    url(r"logout/$", auth_views.LogoutView.as_view(),name='logout')
+    #url(r"^profileacc/", include("profileacc.urls", namespace="profileacc")),
+
 ]
