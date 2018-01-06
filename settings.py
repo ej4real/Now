@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'storages',
     #our apps
     'accounts',
+    'profileacc',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
